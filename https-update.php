@@ -16,7 +16,7 @@
 //                           \$$$$$$  |                                                            
 //         
 //
-// This code is provided 'as is' without any guaratee. Use it in your own risk. Remember to backup Before running this script.
+// This code is provided 'as is' without any guarantee. Use it in your own risk. Remember to backup Before running this script.
 // How it works:
 // This php script loads database connection data from wp-config.php file on the website root.
 // After database connection, the script will run a wutery to get 'siteurl' from wp_options table. 
