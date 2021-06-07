@@ -171,13 +171,13 @@ function updateposts($siteurl){
     msg('Fixing WWW on '.$totalrows.' https Post permalinks');
     
     // Update https www urls to current https siterurl (if any)
-    // In some cases, urls starting with www, but site url not. This will convert http://www.yoursite.com url's to http://yoursite.com in case that there is no www on siteurl.
+    // In some cases, urls starting with www, but site url not. This will convert https://www.yoursite.com url's to https://yoursite.com in case that there is no www on siteurl.
     $ssqlc = "UPDATE wp_posts SET guid = REPLACE(guid, '".$siteurl_sw."', '".$siteurl_s."')";
     $sresult = $conn->query($ssqlc) or die($conn->error .'<br>'.$ssqlc);
     
 
     // Update https non www urls to https www (if any)
-    // In some cases, urls not starting with www, but site url does. This will convert http://yoursite.com url's to http://www.yoursite.com in case that there is www on siteurl.
+    // In some cases, urls not starting with www, but site url does. This will convert https://yoursite.com url's to https://www.yoursite.com in case that there is www on siteurl.
     $ssqlc = "UPDATE wp_posts SET guid = REPLACE(guid, '".$siteurl_sww."', '".$siteurl_s."')";
     $sresult = $conn->query($ssqlc) or die($conn->error .'<br>'.$ssqlc);
     
@@ -244,13 +244,13 @@ function updateposturls($siteurl){
     msg('Fixing WWW on '.$totalrows.' https Post content urls');
     
     // Update https www urls to current https siterurl (if any)
-    // In some cases, permalinks starting with www, but site url not. This will convert http://www.yoursite.com url's to http://yoursite.com in case that there is no www on siteurl.
+    // In some cases, permalinks starting with www, but site url not. This will convert https://www.yoursite.com url's to https://yoursite.com in case that there is no www on siteurl.
     $ssqlc = "UPDATE wp_posts SET post_content = REPLACE(post_content, '".$siteurl_sw."', '".$siteurl_s."')";
     $sresult = $conn->query($ssqlc) or die($conn->error .'<br>'.$ssqlc);
     
 
     // Update https non www urls to https www (if any)
-    // In some cases, permalinks not starting with www, but site url does. This will convert http://yoursite.com url's to http://www.yoursite.com in case that there is www on siteurl.
+    // In some cases, permalinks not starting with www, but site url does. This will convert https://yoursite.com url's to https://www.yoursite.com in case that there is www on siteurl.
     $ssqlc = "UPDATE wp_posts SET post_content = REPLACE(post_content, '".$siteurl_sww."', '".$siteurl_s."')";
     $sresult = $conn->query($ssqlc) or die($conn->error .'<br>'.$ssqlc);
     
