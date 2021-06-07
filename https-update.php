@@ -20,9 +20,8 @@
 // How it works:
 // This php script loads database connection data from wp-config.php file on the website root.
 // After database connection, the script will run a query to get 'siteurl' from wp_options table. 
-// 4 links are created that may have been set on posts url's. With www, without www, with www and https, witout www and https.
-// All these cases are updated to current siteurl with https.
-// This script will also correct urls and permalinks that have or not www.
+// Links are updated in any case that may have been set on posts url's. With www, without www.
+// This script will also correct urls and permalinks that have or not www (not matching www) but have https.
 // https://www.forgedsoft.com/
 
 
