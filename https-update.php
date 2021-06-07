@@ -42,9 +42,6 @@ ignore_user_abort(true);
 // Unset exec time limit
 set_time_limit(0);
 
-// Remove old log
-unlink ("https-update.log");
-
 $siteurl = '';
 
 
