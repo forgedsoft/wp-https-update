@@ -7,7 +7,7 @@ How to run:<br/>
 3.run script from your browser (yoursite.com/https-update.php)<br/>
 <br/>
 <br/>
-// This code is provided 'as is' without any guaratee. Use it in your own risk. Remember to backup Before running this script.<br/>
+// This code is provided 'as is' without any guarantee. Use it in your own risk. Remember to backup Before running this script.<br/>
 // How it works:<br/>
 // This php script loads database connection data from wp-config.php file on the website root.<br/>
 // After database connection, the script will run a wutery to get 'siteurl' from wp_options table. <br/>
