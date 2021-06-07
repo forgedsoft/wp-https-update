@@ -1,4 +1,3 @@
-
 <?php
 // ForgedSoft(tm) Development 2021
 // WORDPRESS UPDATE LINKS TO HTTPS
@@ -146,7 +145,32 @@ function updateposts($siteurl){
     $ssqlc = "UPDATE wp_posts SET guid = REPLACE(guid, '".$siteurl_ww."', '".$siteurl_s."')";
     $sresult = $conn->query($ssqlc) or die($conn->error .'<br>'.$ssqlc);
     
-
+    
+    //get total urls with or without www
+    if(substr($siteurl_s, 0, 11) === "https://www."){
+        $ssqlc= "SELECT COUNT(*) AS totalrows FROM `wp_posts` WHERE `guid` LIKE '%".$siteurl_sww."%' ";
+        
+        $sresult = $conn->query($ssqlc) or die($conn->error .'<br>'.$ssqlc);
+        if (mysqli_num_rows($sresult)!=0) {
+            while($mrow = $sresult->fetch_assoc()) {
+            	$totalrows =  $mrow["totalrows"];
+            }
+        }
+        
+    } else {
+        $ssqlc= "SELECT COUNT(*) AS totalrows FROM `wp_posts` WHERE `guid` LIKE '%".$siteurl_sw."%' ";
+        
+        $sresult = $conn->query($ssqlc) or die($conn->error .'<br>'.$ssqlc);
+        if (mysqli_num_rows($sresult)!=0) {
+            while($mrow = $sresult->fetch_assoc()) {
+            	$totalrows =  $mrow["totalrows"];
+            }
+        }
+          
+    }
+    
+    msg('Fixing WWW on '.$totalrows.' Post permalinks');
+    
     // Update https www urls to current https siterurl (if any)
     // In some cases, urls starting with www, but site url not. This will convert http://www.yoursite.com url's to http://yoursite.com in case that there is no www on siteurl.
     $ssqlc = "UPDATE wp_posts SET guid = REPLACE(guid, '".$siteurl_sw."', '".$siteurl_s."')";
@@ -195,6 +219,31 @@ function updateposturls($siteurl){
     $sresult = $conn->query($ssqlc) or die($conn->error .'<br>'.$ssqlc);
     
 
+    //get total https posts with or without www
+    if(substr($siteurl_s, 0, 11) === "https://www."){
+        $ssqlc= "SELECT COUNT(*) AS totalrows FROM `wp_posts` WHERE `post_content` LIKE '%".$siteurl_sww."%' ";
+        
+        $sresult = $conn->query($ssqlc) or die($conn->error .'<br>'.$ssqlc);
+        if (mysqli_num_rows($sresult)!=0) {
+            while($mrow = $sresult->fetch_assoc()) {
+            	$totalrows =  $mrow["totalrows"];
+            }
+        }
+        
+    } else {
+        $ssqlc= "SELECT COUNT(*) AS totalrows FROM `wp_posts` WHERE `post_content` LIKE '%".$siteurl_sw."%' ";
+        
+        $sresult = $conn->query($ssqlc) or die($conn->error .'<br>'.$ssqlc);
+        if (mysqli_num_rows($sresult)!=0) {
+            while($mrow = $sresult->fetch_assoc()) {
+            	$totalrows =  $mrow["totalrows"];
+            }
+        }
+          
+    }
+    
+    msg('Fixing WWW on '.$totalrows.' Post content urls');
+    
     // Update https www urls to current https siterurl (if any)
     // In some cases, permalinks starting with www, but site url not. This will convert http://www.yoursite.com url's to http://yoursite.com in case that there is no www on siteurl.
     $ssqlc = "UPDATE wp_posts SET post_content = REPLACE(post_content, '".$siteurl_sw."', '".$siteurl_s."')";
