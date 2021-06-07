@@ -169,7 +169,7 @@ function updateposts($siteurl){
           
     }
     
-    msg('Fixing WWW on '.$totalrows.' Post permalinks');
+    msg('Fixing WWW on '.$totalrows.' https Post permalinks');
     
     // Update https www urls to current https siterurl (if any)
     // In some cases, urls starting with www, but site url not. This will convert http://www.yoursite.com url's to http://yoursite.com in case that there is no www on siteurl.
@@ -242,7 +242,7 @@ function updateposturls($siteurl){
           
     }
     
-    msg('Fixing WWW on '.$totalrows.' Post content urls');
+    msg('Fixing WWW on '.$totalrows.' https Post content urls');
     
     // Update https www urls to current https siterurl (if any)
     // In some cases, permalinks starting with www, but site url not. This will convert http://www.yoursite.com url's to http://yoursite.com in case that there is no www on siteurl.
